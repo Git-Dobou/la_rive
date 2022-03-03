@@ -1,0 +1,44 @@
+
+<div style="display: flex; justify-content: center; align-items: center">
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a class="h1"><b>La </b>Rive</a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Se connecter pour commencer votre session</p>
+
+                <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()" style="margin: auto; margin-top: 30px">
+                    <div class="input-group mb-3">
+                        <input formControlName="userName" type="text" class="form-control" placeholder="Nom d'utilisateur">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input formControlName="password" type="password" class="form-control" placeholder="Mot de passe">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <!-- /.col -->
+                        <button type="submit" class="btn-la_rive">Se connecter</button>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.login-box -->
+</div>
+

@@ -1,0 +1,119 @@
+<div style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; flex-direction: row">
+    <h1>Articles</h1>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; margin: 20px; flex-direction: column; border: 2px solid black; padding: 10px; border-radius: 20px 5px 20px 5px;">
+    <h2>Selectionner une categorie</h2>
+    <div style="display: flex; flex-direction: row">
+        <button (click)="this.categoryService.selectModuleCategory(moduleCategory)" [ngStyle]="{'background-color': this.categoryService.currentCategory.value.category.name == moduleCategory.category.name ? '#d9b3ff' : ''}" class="btn-la_rive" style="width: auto !important; margin-right: 10px" *ngFor="let moduleCategory of this.categoryService.moduleCategories.value">
+            {{moduleCategory.category.name}}
+        </button>
+    </div>
+
+    <div style="height: 2px; width: 100%; background-color: black; margin: 10px 0px"></div>
+
+    <div style="display: flex; flex-direction: row; align-content: center;">
+        <button style="margin-right: 10px; width: auto !important" (click)="this.categoryService.selectCategory(category)" *ngFor="let category of this.categoryService.currentCategory.value.sub" class="btn-la_rive">
+            {{category.category.name}}
+        </button>
+        <h6 *ngIf="this.categoryService.currentCategory.value.sub != null && this.categoryService.currentCategory.value.sub.length == 0">
+            Les articles de la categories <b>{{this.categoryService.currentCategory.value.category.name}}</b> sont actuellement affichés
+        </h6>
+    </div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 20px; flex-direction: row; align-content: center; border: 2px solid black; padding: 10px; border-radius: 20px 5px 20px 5px;">
+    <div class="input-group" data-widget="sidebar-search" style="width: 300px !important; margin-right: 20px">
+        <input [(ngModel)]="this.itemFilter.itemNr" style="margin: auto" class="form-control form-control-sidebar" type="search" placeholder="Enterz le numero de l'article" aria-label="Search">
+    </div>
+    <div class="input-group" data-widget="sidebar-search" style="width: 300px !important; margin-right: 20px">
+        <input [(ngModel)]="this.itemFilter.storeName" style="margin: auto" class="form-control form-control-sidebar" type="search" placeholder="Enterz le nom du magazin" aria-label="Search">
+    </div>
+    <div class="input-group" data-widget="sidebar-search" style="width: 250px !important">
+        <input [(ngModel)]="this.itemFilter.stock" style="margin: auto" class="form-control form-control-sidebar" type="search" placeholder="Enterz le nombre d'article" aria-label="Search">
+    </div>
+</div>
+
+<div style="margin-top: 20px; justify-content: center; display: flex; flex-wrap: wrap; flex-direction: column; align-content: center">
+    <div [routerLink]="['/order']" *ngFor="let item of itemsService.items.value | filterItems : this.itemFilter">
+        <div style="cursor: pointer; margin-bottom: 10px; width: 905px; height: 85px;">
+            <div style="margin-right: 20px; float: left; width: 800px; border: 2px solid black; border-radius: 20px 5px 20px 5px;">
+                <div style="margin-left: 10px">
+                    <span>Nom de l'article</span>
+                    <span style="margin-right: 10px">:</span>
+                    <span>
+                        {{item.itemName}}
+                    </span>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <div style="margin-left: 10px">
+                                <span>Prix d'achat</span>
+                                <span style="margin-right: 10px">:</span>
+                                <span>
+                                    {{item.payAmount | currency:'EUR'}}
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <span style="margin-left: 20px; margin-right: 20px">&#9673;</span>
+                        </td>
+                        <td>
+                            <div style="margin-left: 10px; width: 300px">
+                                <span>Prix de vente</span>
+                                <span style="margin-right: 10px">:</span>
+                                <span>
+                                    {{item.sellAmount | currency:'XAF'}}
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div [ngStyle]="{'background-color': (item.availableCount==0) ? 'red' : (item.availableCount<3) ? 'orange' : 'transparent'}" style="border-radius: 4px 1px 4px 1px; width: 20px; height: 10px; margin: auto">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="margin-left: 10px">
+                                <span>Nombre d'article</span>
+                                <span style="margin-right: 10px">:</span>
+                                <span>
+                                    {{item.count}}
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <span style="margin-left: 20px; margin-right: 20px">&#9673;</span>
+                        </td>
+                        <td>
+                            <div style="margin-left: 10px">
+                                <span>Taille</span>
+                                <span style="margin-right: 10px">:</span>
+                                <span>
+                                    {{item.size}}
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 85px; height: 85px; float: left; border-radius: 5px; border: 2px solid black; display: flex; justify-content: center; align-items: center">
+                <img (click)="clickImage(item)" style=" max-width: 100%; max-height: 100%; margin: auto;" src="{{item.imgData != null ? item.imgData : 'data:image/jpeg;base64,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'}}" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div #myDiv id="myModal" class="modal" [ngStyle]="{'display': (this.showModal) ? 'block' : 'none'}">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span (click)="close()" class="close">&times;</span>
+        <div style="width: 100%; height:100%; float: left;">
+            <img style="border-radius: 5px; max-width: 100%; max-height: 100%; margin: auto;" src="{{imgData}}" />
+        </div>
+    </div>
+
+</div>

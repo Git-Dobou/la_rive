@@ -1,0 +1,148 @@
+
+<div style="display: flex; flex-wrap: nowrap; justify-content: center; margin-bottom: 20px; flex-direction: column; align-items: center">
+    <h1>Ajouter une nouvelle commande</h1>
+
+    <div [formGroup]="addOrderForm" (ngSubmit)="save()" style="margin-top: 30px; width: 800px">
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <span>Numéro de la commande</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <div style="display: flex; flex-direction: row">
+                        <input readonly [ngClass]="{'is-invalid': this.isAddItemFormElementValid('orderNr') === false}" formControlName="orderNr" class="element_size_new_item form-control" type="text" />
+                        <button (click)="generateItemNumber()" class="btn-la_rive" style="margin: auto 0px auto 10px; width: 150px !important">Genéré</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 250px">
+                    <div style="width: 250px">
+                        <span>Magazin</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <input [ngClass]="{'is-invalid': this.isAddItemFormElementValid('store') === false}" formControlName="store" class="element_size_new_order form-control" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <span>Commandé le</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <input [ngClass]="{'is-invalid': this.isAddItemFormElementValid('date') === false}" formControlName="date" type="date" class="form-control element_size_new_order" id="reservation">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <span>Contenue de la commande</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <input [ngClass]="{'is-invalid': this.isAddItemFormElementValid('orderContent') === false}" formControlName="orderContent" type="text" class="element_size_new_order form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <span>Montant</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <input [ngClass]="{'is-invalid': this.isAddItemFormElementValid('amount') === false}" formControlName="amount" class="element_size_new_order form-control" type="number" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <span>Moyen de payement</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <select [ngClass]="{'is-invalid': this.isAddItemFormElementValid('meansOfPayment') === false}" formControlName="meansOfPayment" class="element_size_new_order form-control">
+                        <option value="0"></option>
+                        <option value="1">Paypal</option>
+                        <option value="2">Klarna</option>
+                        <option value="3">AfterPay</option>
+                        <option value="4">Visa</option>
+                        <option value="5">Mastercard</option>
+                        <option value="6">Virement</option>
+                        <option value="7">Cash</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <span>Style de payement</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <select [ngClass]="{'is-invalid': this.isAddItemFormElementValid('paymentMethode') === false}" formControlName="paymentMethode" class="element_size_new_order form-control">
+                        <option value=0></option>
+                        <option value=1>Totalité</option>
+                        <option value=2>Tranche</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr *ngIf="this.getValueAddOrderFormElement('paymentMethode') == 2">
+                <td>
+                    <div>
+                        <span>Nombre d'echeance á regler</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <input [ngClass]="{'is-invalid': this.isAddItemFormElementValid('countRate') === false}" formControlName="countRate" class="element_size_new_order form-control" type="number" />
+                </td>
+            </tr>
+
+            <tr *ngIf="this.getValueAddOrderFormElement('paymentMethode') == 2">
+                <td>
+                    <div>
+                        <span>Montant par écheance</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <input [ngClass]="{'is-invalid': this.isAddItemFormElementValid('rateAmount') === false}" formControlName="rateAmount" class="element_size_new_order form-control" type="number" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div>
+                        <span *ngIf="this.getValueAddOrderFormElement('paymentMethode') == 2">Date du premier payement</span>
+                        <span *ngIf="this.getValueAddOrderFormElement('paymentMethode') != 2">Date du payement</span>
+                        <span style="margin-right: 10px">:</span>
+                    </div>
+                </td>
+                <td>
+                    <input [ngClass]="{'is-invalid': this.isAddItemFormElementValid('firstPaymentDate') === false}" formControlName="firstPaymentDate" class="element_size_new_order form-control" type="date" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <button (click)="save()" style="margin-top: 20px; margin-bottom: 20px; height: 40px; width: 600px;" class="btn-la_rive">Enreigistré</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+</div>

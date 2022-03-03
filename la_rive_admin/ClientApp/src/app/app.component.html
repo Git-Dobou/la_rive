@@ -1,0 +1,10 @@
+<body class="app-la_rive">
+    <app-nav-menu></app-nav-menu>
+    <section style="width: 100%; height: 100%; margin-top: 80px !important; color: black; font-size: 17px" class="text-dark content">
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+
+            <ngx-loading [show]="this.loadingService.loading.value" [config]="{fullScreenBackdrop: true, backdropBorderRadius: '20px'}"></ngx-loading>
+        </div>
+    </section>
+</body>

@@ -1,0 +1,63 @@
+<header>
+    <nav class="navbar navbar2 navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand fa fa-home" style="font-size: 30px" [routerLink]="['/home']">     Home</a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse"
+                    aria-label="Toggle navigation"
+                    [attr.aria-expanded]="isExpanded"
+                    (click)="toggle()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+                 [ngClass]="{ show: isExpanded }">
+                <ul class="navbar-nav flex-grow" style="font-size: 18px;" *ngIf="this.logingService.connected.value">
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <div style="border: 2px solid black; border-radius: 10px 2.5px 10px 2.5px; margin-right: 10px">
+                            <a class="nav-link text-dark fa fa-shopping-cart" [routerLink]="['/checkout']">     CAISSE</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <div style="border: 2px solid black; border-radius: 10px 2.5px 10px 2.5px; margin-right: 10px">
+                            <a class="nav-link text-dark fa fa-list" [routerLink]="['/items']">     Articles</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <div style="border: 2px solid black; border-radius: 10px 2.5px 10px 2.5px; margin-right: 10px">
+                            <a class="nav-link text-dark fa fa-box" [routerLink]="['/orders']">     Commandes</a>
+                        </div>
+                    </li>
+                    <!--
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <div style="border: 2px solid black; border-radius: 10px 2.5px 10px 2.5px; margin-right: 10px">
+                            <a readonly class="nav-link text-dark fa fa-calendar-alt" [routerLink]="['/calender']">     Calendrier</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <div style="border: 2px solid black; border-radius: 10px 2.5px 10px 2.5px; margin-right: 10px">
+                            <a class="nav-link text-dark fa fa-donate" [routerLink]="['/cost']">     Depenses</a>
+                        </div>
+                    </li>
+
+
+                            <li (click)="this.moduleService.currentModule.next('services')" class="nav-item" [routerLinkActive]="['link-active']">
+                            <div [ngStyle]="{'background-color': this.moduleService.currentModule.value == 'services' ? 'green' : 'transparent'}" style="border: 2px solid black; border-radius: 10px 2.5px 10px 2.5px; margin-right: 10px">
+                                <a class="nav-link text-dark fa fa-toolbox" [routerLink]="['/services']">     Services</a>
+                            </div>
+                        </li>
+
+                                                -->
+
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <div (click)="this.logingService.logout()" style="border: 2px solid black; border-radius: 10px 2.5px 10px 2.5px; margin-right: 10px">
+                            <a readonly class="nav-link text-dark fa fa-sign-out-alt" [routerLink]="['/']"></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

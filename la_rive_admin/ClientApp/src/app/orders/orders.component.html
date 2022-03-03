@@ -1,0 +1,140 @@
+<div style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; flex-direction: row">
+    <h1>Commandes</h1>
+    <h1 style="margin-left: 20px">{{this.ordersService.sum | currency:'EUR'}}</h1>
+    <h1 style="margin-left: 20px">{{this.ordersService.sum * 655 | currency:'XFA'}}</h1>
+    <button [routerLink]="['/new-order']" class="btn-la_rive" style="margin-left: 20px; margin-right: 20px">Ajouter une commande</button>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 20px; flex-direction: row; border: 2px solid black; padding: 10px; border-radius: 20px 5px 20px 5px;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 0px 20px; flex-direction: row;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; flex-direction: column;">
+            <label>Intervall:</label>
+            <div class="form-group" style="display: flex; flex-direction: row; margin-right: 20px">
+
+                <div class="input-group" style="margin-right: 10px">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="far fa-calendar-alt"></i>
+                        </span>
+                    </div>
+                    <input [(ngModel)]="this.orderFilter.intervalFrom" type="date" style="width: 170px; height: 40px" class="form-control float-right" id="reservation">
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="far fa-calendar-alt"></i>
+                        </span>
+                    </div>
+                    <input [(ngModel)]="this.orderFilter.intervalTo" type="date" style="width: 170px; height: 40px" class="form-control float-right" id="reservation">
+                </div>
+                <!-- /.input group -->
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; flex-direction: column; margin-right: 20px">
+            <label>Date:</label>
+            <div class="form-group" style="display: flex; flex-direction: row; width: 150px">
+
+                <select [(ngModel)]="this.orderFilter.dateFilter" class="element_size_new_order" style="height: 40px">
+                    <option value="0"></option>
+                    <option value="1">Ascendant</option>
+                    <option value="2">Descendant</option>
+                </select>
+            </div>
+            <!-- /.input group -->
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; flex-direction: column; margin-right: 20px">
+            <label>Prix:</label>
+            <div class="form-group" style="display: flex; flex-direction: row; width: 150px">
+
+                <select [(ngModel)]="this.orderFilter.priceFilter" class="element_size_new_order" style="height: 40px">
+                    <option value="0"></option>
+                    <option value="1">Ascendant</option>
+                    <option value="2">Descendant</option>
+                </select>
+            </div>
+            <!-- /.input group -->
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; flex-direction: column; margin-right: 20px">
+            <label>Livraison:</label>
+            <div class="form-group" style="display: flex; flex-direction: row; width: 150px">
+
+                <select [(ngModel)]="this.orderFilter.devlivered" class="element_size_new_order" style="height: 40px">
+                    <option value="0"></option>
+                    <option value="1">Livré</option>
+                    <option value="2">Non livré</option>
+                </select>
+            </div>
+            <!-- /.input group -->
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; flex-direction: column; margin-right: 20px;">
+            <label>Mode de payement:</label>
+            <div class="form-group" style="display: flex; flex-direction: row; width: 150px">
+                <select [(ngModel)]="this.orderFilter.meansOfPayment" class="element_size_new_order" style="height: 40px">
+                    <option value="0"></option>
+                    <option value="1">Paypal</option>
+                    <option value="2">Klarna</option>
+                    <option value="3">AfterPay</option>
+                    <option value="4">Visa</option>
+                    <option value="5">Mastercard</option>
+                    <option value="6">Virement</option>
+                    <option value="7">Cash</option>
+                </select>
+                <!-- /.input group -->
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; flex-direction: column; margin-right: 20px;">
+            <label>Type de payement:</label>
+            <div class="form-group" style="display: flex; flex-direction: row; width: 150px">
+
+                <select [(ngModel)]="this.orderFilter.paymentMethode" class="element_size_new_order" style="height: 40px">
+                    <option value="0"></option>
+                    <option value="1">Totalité</option>
+                    <option value="2">Tranche</option>
+                </select>
+                <!-- /.input group -->
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group" data-widget="sidebar-search" style="width: 50% !important">
+        <input [(ngModel)]="this.orderFilter.storeName" class="form-control form-control-sidebar" type="search" placeholder="Enterz le nom du magazin" aria-label="Search">
+        <div class="input-group-append">
+            <button class="btn btn-sidebar">
+                <i class="fas fa-search fa-fw"></i>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 20px">
+    <div (click)="this.ordersService.currentOrder.next(order)" [routerLink]="['/order']" *ngFor="let order of this.ordersService.orders.value | filterOrders : this.orderFilter" style="cursor: pointer; margin-right: 10px; margin-left: 10px; margin-top: 20px; width: 285px; height: 150px; border: 2px solid black; border-radius: 20px 5px 20px 5px;">
+        <div style="margin-left: 10px; margin-top: 5px">
+            <h5>{{order.store}}</h5>
+            <span>{{order.orderContent}}</span>
+            <div>
+                <span>Commandé le</span>
+                <span style="margin-right: 10px">:</span>
+                <span>{{order.date | date: 'dd.MM.yyyy'}}</span>
+            </div>
+            <div>
+                <span>Montant</span>
+                <span style="margin-right: 10px">:</span>
+                <span>{{order.amount | currency:'EUR'}}</span>
+            </div>
+            <div>
+                <span>Moyen de payement</span>
+                <span style="margin-right: 10px">:</span>
+                <span>
+                    {{helperService.getMeansOfPaymentText(order.meansOfPayment)}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

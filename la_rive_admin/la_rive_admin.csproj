@@ -1,0 +1,170 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Services\" />
+    <None Remove="Models\" />
+    <None Remove="Models\Data\" />
+    <None Remove="Models\Data\Enums\" />
+    <None Remove="Models\Data\Enums\Order\" />
+    <None Remove="Models\Data\Enums\Item\" />
+    <None Remove="MongoDB.Driver" />
+    <None Remove="Models\Database\" />
+    <None Remove="Services\Order\" />
+    <None Remove="Font.Awesome" />
+    <None Remove="ClientApp\src\app\services\" />
+    <None Remove="Services\Json\" />
+    <None Remove="Services\Json\Reader\" />
+    <None Remove="Services\Json\Writer\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="ClientApp\src\app\orders %28Kopie%29\" />
+    <None Remove="ClientApp\src\app\item\" />
+    <None Remove="ClientApp\content\" />
+    <None Remove="ClientApp\content\images\" />
+    <None Remove="ClientApp\src\app\services\helper\" />
+    <None Remove="ClientApp\src\app\home %28Kopie%29\" />
+    <None Remove="ClientApp\src\app\services\loging\" />
+    <None Remove="ClientApp\src\app\services\request\" />
+    <None Remove="Services\Loging\" />
+    <None Remove="ClientApp\src\app\services\items\" />
+    <None Remove="ClientApp\src\app\services\module\" />
+    <None Remove="ClientApp\src\app\new-order %28Kopie%29\" />
+    <None Remove="ClientApp\src\app\items %28Kopie%29\" />
+    <None Remove="ClientApp\src\app\services\category\" />
+    <None Remove="ClientApp\src\app\models\" />
+    <None Remove="Services\Order %28Kopie%29\" />
+    <None Remove="ClientApp\src\app\pipes\" />
+    <None Remove="ClientApp\src\app\services\loading\" />
+    <None Remove="EntityFramework" />
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="MySql.Data" />
+    <None Remove="MySql.Data.EntityFrameworkCore" />
+    <None Remove="System.Data.SqlClient" />
+    <None Remove="System.Data.OleDb" />
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="Microsoft.Data.Sqlite" />
+    <None Remove="System.Data.SQLite" />
+    <None Remove="System.Data.SQLite.EF6" />
+    <None Remove="System.Data.SQLite.Linq" />
+    <None Remove="System.Data.SQLite.Core" />
+    <None Remove="ClientApp\dist\fa-solid-900.0c6bfc668a7293576017.eot" />
+    <None Remove="ClientApp\dist\fa-brands-400.1d5619cd804367cefe6d.svg" />
+    <None Remove="ClientApp\dist\index.html" />
+    <None Remove="ClientApp\dist\fa-regular-400.b91d376b8d7646d671cd.woff2" />
+    <None Remove="ClientApp\dist\fa-regular-400.b0e2db3b634d1bc3928e.eot" />
+    <None Remove="ClientApp\dist\fa-regular-400.766913e6c0088ab8c9f7.ttf" />
+    <None Remove="ClientApp\dist\fa-brands-400.ed311c7a0ade9a75bb3e.woff2" />
+    <None Remove="ClientApp\dist\3rdpartylicenses.txt" />
+    <None Remove="ClientApp\dist\polyfills-es5.026233df937cbf728097.js" />
+    <None Remove="ClientApp\dist\fa-regular-400.d1d7e3b4c219fde0f737.woff" />
+    <None Remove="ClientApp\dist\main-es2015.a92d330f0f848944de00.js" />
+    <None Remove="ClientApp\dist\fa-solid-900.d824df7eb2e268626a2d.woff2" />
+    <None Remove="ClientApp\dist\polyfills-es2015.ffa9bb4e015925544f91.js" />
+    <None Remove="ClientApp\dist\fa-brands-400.1a575a4138e5f366474f.woff" />
+    <None Remove="ClientApp\dist\fa-solid-900.37bc7099f6f1ba802361.svg" />
+    <None Remove="ClientApp\dist\main-es5.a92d330f0f848944de00.js" />
+    <None Remove="ClientApp\dist\runtime-es5.cdfb0ddb511f65fdc0a0.js" />
+    <None Remove="ClientApp\dist\runtime-es2015.cdfb0ddb511f65fdc0a0.js" />
+    <None Remove="ClientApp\dist\main-es2015.a92d330f0f848944de00.js.LICENSE.txt" />
+    <None Remove="ClientApp\dist\fa-brands-400.592643a83b8541edc520.eot" />
+    <None Remove="ClientApp\dist\fa-brands-400.513aa607d398efaccc55.ttf" />
+    <None Remove="ClientApp\dist\fa-solid-900.d745348d289b14902692.woff" />
+    <None Remove="ClientApp\dist\styles.83d314d7c16fccb5f520.css" />
+    <None Remove="ClientApp\dist\fa-solid-900.b9625119ce4300f0ef89.ttf" />
+    <None Remove="ClientApp\dist\polyfills-es2015.ffa9bb4e015925544f91.js.LICENSE.txt" />
+    <None Remove="ClientApp\dist\polyfills-es5-es2015.026233df937cbf728097.js.LICENSE.txt" />
+    <None Remove="ClientApp\dist\fa-regular-400.c5d109be8edd3de0f60e.svg" />
+    <None Remove="Services\Db\" />
+    <None Remove="Services\Order\Order\" />
+    <None Remove="Services\Item\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Proxies" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Data\" />
+    <Folder Include="Models\Data\Enums\" />
+    <Folder Include="Models\Data\Enums\Order\" />
+    <Folder Include="Models\Data\Enums\Item\" />
+    <Folder Include="Models\Database\" />
+    <Folder Include="Services\Order\" />
+    <Folder Include="ClientApp\src\app\services\" />
+    <Folder Include="Services\Json\" />
+    <Folder Include="Services\Json\Reader\" />
+    <Folder Include="Services\Json\Writer\" />
+    <Folder Include="ClientApp\src\app\order\" />
+    <Folder Include="ClientApp\src\app\item\" />
+    <Folder Include="ClientApp\content\" />
+    <Folder Include="ClientApp\content\images\" />
+    <Folder Include="ClientApp\src\app\services\helper\" />
+    <Folder Include="ClientApp\src\app\items\" />
+    <Folder Include="ClientApp\src\app\loging\" />
+    <Folder Include="ClientApp\src\app\services\loging\" />
+    <Folder Include="ClientApp\src\app\services\request\" />
+    <Folder Include="Services\Loging\" />
+    <Folder Include="ClientApp\src\app\services\items\" />
+    <Folder Include="ClientApp\src\app\services\module\" />
+    <Folder Include="ClientApp\src\app\checkout\" />
+    <Folder Include="ClientApp\src\app\cost\" />
+    <Folder Include="ClientApp\src\app\services\category\" />
+    <Folder Include="ClientApp\src\app\models\" />
+    <Folder Include="Services\Category\" />
+    <Folder Include="ClientApp\src\app\pipes\" />
+    <Folder Include="ClientApp\src\app\services\loading\" />
+    <Folder Include="Services\Db\" />
+    <Folder Include="Services\Item\" />
+  </ItemGroup>
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

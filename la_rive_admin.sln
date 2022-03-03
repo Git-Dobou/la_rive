@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "la_rive_admin", "la_rive_admin\la_rive_admin.csproj", "{6EBF853D-0058-403D-BADA-187825EC4EF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EBF853D-0058-403D-BADA-187825EC4EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBF853D-0058-403D-BADA-187825EC4EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBF853D-0058-403D-BADA-187825EC4EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBF853D-0058-403D-BADA-187825EC4EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EBC28756-0323-44EE-8F92-3EBEB1F2A710}
+	EndGlobalSection
+EndGlobal
